@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     
@@ -37,12 +38,18 @@ struct ContentView: View {
             }
             .padding()
             Spacer()
+            List {
+                ForEach (toDos) { toDoItem in
+                        Text(toDoItem.title)
+                    }
+            }
             
         }
+        
         if showNewTask {
             NewToDoView()
         }
-        
+        @Query var toDos: [ToDoItem]
     }
 }
 
